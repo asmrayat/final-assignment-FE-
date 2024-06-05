@@ -2,8 +2,7 @@ import React from "react";
 import { Link } from "react-router-dom";
 import Swal from "sweetalert2";
 
-const Dcard = ({ product,onDelete }) => {
-
+const Dcard = ({ product, onDelete }) => {
   const { _id, name, description, price, image_url } = product;
 
   const handleDelete = async () => {
@@ -17,17 +16,31 @@ const Dcard = ({ product,onDelete }) => {
       confirmButtonText: "Yes, delete it!",
     }).then((result) => {
       if (result.isConfirmed) {
-        fetch(`http://localhost:5000/products/${_id}`, {
+        const token = localStorage.getItem("token"); // Get the JWT token from localStorage
+
+        fetch(`https://final-assignment-be.onrender.com/products/${_id}`, {
           method: "DELETE",
+          headers: {
+            Authorization: `Bearer ${token}`, // Include the JWT token in the Authorization header
+          },
         })
           .then((res) => res.json())
-          .then((data) => console.log(data));
-
-        Swal.fire({
-          title: "Deleted!",
-          text: "Your file has been deleted.",
-          icon: "success",
-        });
+          .then((data) => {
+         
+            Swal.fire({
+              title: "Deleted!",
+              text: "Your file has been deleted.",
+              icon: "success",
+            });
+          })
+          .catch((error) => {
+            console.error("Error:", error);
+            Swal.fire({
+              title: "Error!",
+              text: "There was an error deleting your file.",
+              icon: "error",
+            });
+          });
       }
     });
   };
@@ -35,7 +48,7 @@ const Dcard = ({ product,onDelete }) => {
     <div className="card w-80 bg-base-100 shadow-xl">
       <figure>
         {image_url ? (
-          <img src={image_url} />
+          <img className="w-full h-40 object-cover" src={image_url} />
         ) : (
           <img
             src="https://img.daisyui.com/images/stock/photo-1606107557195-0e29a4b5b4aa.jpg"
@@ -51,8 +64,15 @@ const Dcard = ({ product,onDelete }) => {
           <Link to={`/products/${_id}`} className="btn btn-primary">
             See details
           </Link>
-          <Link to={`products/${_id}`} className="btn bg-[#9ac824]">Edit</Link>
-          <button onClick={handleDelete} className="btn bg-[#ff1212] text-white">Delete</button>
+          <Link to={`products/${_id}`} className="btn bg-[#9ac824]">
+            Edit
+          </Link>
+          <button
+            onClick={handleDelete}
+            className="btn bg-[#ff1212] text-white"
+          >
+            Delete
+          </button>
         </div>
       </div>
     </div>

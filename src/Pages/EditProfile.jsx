@@ -8,12 +8,13 @@ const EditProfile = () => {
   const [age, setAge] = useState("");
   const [number, setNumber] = useState("");
   const [userDataFetched, setUserDataFetched] = useState(false);
+  const token = localStorage.getItem("token");
 
   useEffect(() => {
     const fetchUserData = async () => {
       try {
         const response = await fetch(
-          `http://localhost:5000/get-user/${user?.email}`
+          `https://final-assignment-be.onrender.com/get-user/${user?.email}`
         );
         const data = await response.json();
         setName(data?.name);
@@ -46,15 +47,16 @@ const EditProfile = () => {
     }).then((result) => {
       /* Read more about isConfirmed, isDenied below */
       if (result.isConfirmed) {
-        fetch("http://localhost:5000/edit-profile", {
+        fetch("https://final-assignment-be.onrender.com/edit-profile", {
           method: "PATCH",
           headers: {
             "Content-type": "application/json",
+            Authorization: `Bearer ${token}`, // Include the JWT token in the Authorization header
           },
           body: JSON.stringify(editResult),
         })
           .then((res) => res.json())
-          .then((data) => console.log(data));
+          // .then((data) => console.log(data));
         form.reset();
         Swal.fire("Saved!", "", "success");
       } else if (result.isDenied) {

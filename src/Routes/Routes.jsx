@@ -13,8 +13,7 @@ import AddProduct from "../Pages/AddProduct";
 import EditProfile from "../Pages/EditProfile";
 import EditProduct from "../Pages/EditProduct";
 import GiftCard from "../Pages/GiftCard";
-const token = localStorage.getItem('token')
-console.log(token)
+const token = localStorage.getItem("token");
 export const router = createBrowserRouter([
   {
     path: "/",
@@ -24,15 +23,19 @@ export const router = createBrowserRouter([
       {
         path: "/",
         element: <Home />,
-        loader: () => fetch("http://localhost:5000/products"),
-        headers:{
-          "Content-type": "application/json"
+        loader: () =>
+          fetch("https://final-assignment-be.onrender.com/products"),
+        headers: {
+          "Content-type": "application/json",
         },
       },
       {
         path: "/products/:id",
         element: <ProductDetails />,
-        loader: ({params}) => fetch(`http://localhost:5000/products/${params.id}`),
+        loader: ({ params }) =>
+          fetch(
+            `https://final-assignment-be.onrender.com/products/${params.id}`
+          ),
       },
       {
         path: "/about",
@@ -52,7 +55,7 @@ export const router = createBrowserRouter([
       },
       {
         path: "/gift-card",
-        element: <GiftCard/>,
+        element: <GiftCard />,
       },
     ],
   },
@@ -60,7 +63,7 @@ export const router = createBrowserRouter([
     path: "/dashboard",
     element: <DeshboardLayout />,
     errorElement: <ErrorPage />,
-   
+
     children: [
       {
         path: "/dashboard",
@@ -80,10 +83,13 @@ export const router = createBrowserRouter([
       },
       {
         path: "products/:id",
-        loader: ({params}) => fetch(`http://localhost:5000/products/${params.id}`),
+        loader: ({ params }) =>
+          fetch(
+            `https://final-assignment-be.onrender.com/products/${params.id}`
+          ),
         element: (
           <PrivateRouter>
-            <EditProduct/>
+            <EditProduct />
           </PrivateRouter>
         ),
       },

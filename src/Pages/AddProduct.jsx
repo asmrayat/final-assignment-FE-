@@ -15,7 +15,7 @@ const AddProduct = () => {
     const price = form.price.value;
     const image_url = form.image_url.value;
     const addResult = { name, description, price, image_url };
-    
+
     Swal.fire({
       title: "Do you want to submit the changes?",
       showCancelButton: true,
@@ -24,15 +24,16 @@ const AddProduct = () => {
     }).then((result) => {
       /* Read more about isConfirmed, isDenied below */
       if (result.isConfirmed) {
-        fetch("http://localhost:5000/create-post", {
+        fetch("https://final-assignment-be.onrender.com/create-post", {
           method: "POST",
           headers: {
             "Content-type": "application/json",
+            Authorization: `Bearer ${token}`, // Include the JWT token in the Authorization header
           },
           body: JSON.stringify(addResult),
         })
           .then((res) => res.json())
-          .then((data) => console.log(data));
+          // .then((data) => console.log(data));
         form.reset();
         Swal.fire("Submited", "", "success");
       } else if (result.isDenied) {
@@ -83,7 +84,17 @@ const AddProduct = () => {
         <div>
           <label className="label">
             <span className="label-text">Image(ULR only)</span>
-            <span className="label-text">use <a target="_blank" className="text-[#1c2b75] font-bold" href="https://imgbb.com/">imgbb</a> to upload image</span>
+            <span className="label-text">
+              use{" "}
+              <a
+                target="_blank"
+                className="text-[#1c2b75] font-bold"
+                href="https://imgbb.com/"
+              >
+                imgbb
+              </a>{" "}
+              to upload image
+            </span>
           </label>
           <input
             type="text"

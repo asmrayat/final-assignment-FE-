@@ -4,7 +4,7 @@ const About = () => {
   return (
     <div className="m-5">
       <div
-        className="hero min-h-screen"
+        className="hero lg:min-h-screen"
         style={{
           backgroundImage:
             "url(https://img.freepik.com/free-photo/interior-clothing-store-with-stylish-merchandise-racks-fashionable-brand-design-casual-wear-modern-boutique-empty-fashion-showroom-shopping-centre-with-elegant-merchandise_482257-65537.jpg)",
@@ -22,7 +22,7 @@ const About = () => {
           </div>
         </div>
       </div>
-      <div className="flex gap-5 m-10">
+      <div className="lg:flex gap-5 m-10">
         <div>
           <div className="card card-side bg-base-100 shadow-xl">
             <figure>

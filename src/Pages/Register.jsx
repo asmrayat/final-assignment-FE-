@@ -4,6 +4,7 @@ import useAuth from "../Hooks/useAuth";
 import GoogleLogin from "../Components/Login-Reg/GoogleLogin";
 
 const Register = () => {
+  const token = localStorage.getItem('token');
   const { createUser, user } = useAuth();
   const navigate = useNavigate();
   const location = useLocation();
@@ -21,7 +22,24 @@ const Register = () => {
       setPassMatch(false);
     } else {
       setPassMatch(true);
-      await createUser(email, password);
+      await createUser(email, password).then((data) => {
+        const name = data.user.displayName;
+        const email = data.user.email;
+        const result = { name, email };
+  
+        fetch("https://final-assignment-be.onrender.com/create-user", {
+          method: "POST",
+          headers: {
+            "Content-type": "application/json",
+            authorization: `Bearer ${token}`,
+          },
+          body: JSON.stringify(result),
+        })
+          .then((res) => res.json())
+          .then((data) => {
+            localStorage.setItem("token", data?.token);
+          });
+      });;
     }
   };
   useEffect(() => {

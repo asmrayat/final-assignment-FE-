@@ -40,8 +40,8 @@ const Home = () => {
   };
 
   const token = localStorage.getItem("token");
-  console.log(token);
-  console.log(data);
+  // console.log(token);
+  // console.log(data);
 
   const imageLink = ["https://icms-image.slatic.net/images/ims-web/d6426a95-8b18-4ee1-9cbf-f5b188a9f9b8.jpg","https://icms-image.slatic.net/images/ims-web/75e59156-3c3c-4d9a-a776-bb9d4b0373d9.jpg","https://icms-image.slatic.net/images/ims-web/3cd0cd0d-be36-4c7d-bf11-269b5a5f3c1a.jpg"]
 

@@ -5,40 +5,40 @@ import Swal from "sweetalert2";
 
 const Navbar = () => {
   const { logout, user } = useAuth();
-  const [userData,setUserData]= useState([]);
-  const handleLogOut=()=>{
+  const [userData, setUserData] = useState([]);
+  const handleLogOut = () => {
     Swal.fire({
       title: "Are you sure you want to logout?",
       icon: "warning",
       showCancelButton: true,
       confirmButtonColor: "#3085d6",
       cancelButtonColor: "#d33",
-      confirmButtonText: "Yes"
+      confirmButtonText: "Yes",
     }).then((result) => {
       if (result.isConfirmed) {
         logout();
         localStorage.clear();
         Swal.fire({
           title: "Logged out",
-          icon: "success"
+          icon: "success",
         });
       }
     });
-
-  }
+  };
 
   useEffect(() => {
     const fetchUserData = async () => {
       try {
-        const response = await fetch(`http://localhost:5000/get-user/${user.email}`);
+        const response = await fetch(
+          `https://final-assignment-be.onrender.com/get-user/${user.email}`
+        );
         const data = await response.json();
         setUserData(data);
       } catch (error) {
-        console.error('Error fetching user data:', error);
+        console.error("Error fetching user data:", error);
       }
     };
-      fetchUserData();
-  
+    fetchUserData();
   }, [user]);
 
   return (
@@ -63,7 +63,7 @@ const Navbar = () => {
           </div>
           <ul
             tabIndex={0}
-            className="menu menu-sm dropdown-content mt-3 z-[1] p-2 shadow bg-base-100 rounded-box w-52"
+            className=" z-10 menu menu-sm dropdown-content mt-3 p-2 shadow bg-base-100 rounded-box w-52"
           >
             <li>
               <Link to="/">Home</Link>
@@ -72,8 +72,8 @@ const Navbar = () => {
               <Link to="/about">About</Link>
             </li>
             <li>
-            <Link to="/gift-card">Gift Card</Link>
-          </li>
+              <Link to="/gift-card">Gift Card</Link>
+            </li>
             {!user && (
               <li>
                 <Link to="/login">Login</Link>
@@ -99,9 +99,11 @@ const Navbar = () => {
             )}
           </ul>
         </div>
-        <Link to="/" className="btn btn-ghost text-xl">Amar Shop</Link>
+        <Link to="/" className="btn btn-ghost text-xl">
+          Amar Shop
+        </Link>
       </div>
-      <div className="navbar-center hidden lg:flex">
+      <div className=" z-10 navbar-center hidden lg:flex ">
         <ul className="menu menu-horizontal px-1">
           <li>
             <Link to="/">Home</Link>
@@ -147,18 +149,22 @@ const Navbar = () => {
                   {userData.name}
                 </a>
               </li>
-              {userData.age&&<li>
-                <a>
-                  <span className="font-bold">Age:</span>
-                  {userData.age}
-                </a>
-              </li>}
-              {userData.number&&<li>
-                <a>
-                  <span className="font-bold">Number:</span>
-                  {userData.number}
-                </a>
-              </li>}
+              {userData.age && (
+                <li>
+                  <a>
+                    <span className="font-bold">Age:</span>
+                    {userData.age}
+                  </a>
+                </li>
+              )}
+              {userData.number && (
+                <li>
+                  <a>
+                    <span className="font-bold">Number:</span>
+                    {userData.number}
+                  </a>
+                </li>
+              )}
               <li>
                 <a>
                   <span className="font-bold">Email:</span>
@@ -166,7 +172,12 @@ const Navbar = () => {
                 </a>
               </li>
               <li>
-                  <Link to="/edit-profile" className="btn bg-[#208eca] text-white">Edit profile</Link>
+                <Link
+                  to="/edit-profile"
+                  className="btn bg-[#208eca] text-white"
+                >
+                  Edit profile
+                </Link>
               </li>
               {user && (
                 <li>

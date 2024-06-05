@@ -1,35 +1,35 @@
-
 import useAuth from "../../Hooks/useAuth";
 
 const GoogleLogin = () => {
   const { googleLogin } = useAuth();
-  const token = localStorage.getItem('token')
+  const token = localStorage.getItem("token");
 
   const handleGoogleSignIn = () => {
-    googleLogin().then((data)=>{
+    googleLogin().then((data) => {
+      const name = data.user.displayName;
+      const email = data.user.email;
+      const result = { name, email };
 
-      const name =(data.user.displayName);
-      const email = (data.user.email);
-      const result = {name,email}
-      
-      fetch('http://localhost:5000/create-user',{
-        method:"POST",
-        headers:{
+      fetch("https://final-assignment-be.onrender.com/create-user", {
+        method: "POST",
+        headers: {
           "Content-type": "application/json",
-          authorization:`Bearer ${token}`
+          authorization: `Bearer ${token}`,
         },
-        body:JSON.stringify(result)
+        body: JSON.stringify(result),
       })
-      .then((res)=>res.json())
-      .then((data)=>{
-        localStorage.setItem('token',data?.token)
-      });
-
+        .then((res) => res.json())
+        .then((data) => {
+          localStorage.setItem("token", data?.token);
+        });
     });
   };
 
   return (
-    <button onClick={handleGoogleSignIn} className="btn btn-primary sm:w-96 lg:w-full">
+    <button
+      onClick={handleGoogleSignIn}
+      className="btn btn-primary sm:w-96 lg:w-full"
+    >
       Continue With Google
     </button>
   );
