@@ -1,0 +1,81 @@
+{
+  "products": [
+    {
+      "id": "101",
+      "name": "Smartphone",
+      "description": "Latest model smartphone with advanced features",
+      "price": 699.99,
+      "image_url": "https://www.cnet.com/a/img/resize/0302d07e10ba8dc211f7b4e25891ad46dda31976/hub/2023/02/05/f52fdc98-dafc-4d05-b20e-8bd936b49a53/oneplus-11-review-cnet-lanxon-promo-8.jpg?auto=webp&fit=crop&height=675&width=1200"
+    },
+    {
+      "id": "102",
+      "name": "Laptop",
+      "description": "High-performance laptop for professionals",
+      "price": 1199.99,
+      "image_url": "https://cdn.thewirecutter.com/wp-content/media/2023/12/businesslaptops-2048px-0032-2x1-1.jpg?width=2048&quality=75&crop=2:1&auto=webp"
+    },
+    {
+      "id": "103",
+      "name": "Men's T-Shirt",
+      "description": "Comfortable cotton t-shirt",
+      "price": 19.99,
+      "image_url": "https://5.imimg.com/data5/SELLER/Default/2022/6/UQ/BI/FF/31943666/mens-tshirt-1000x1000.jpeg"
+    },
+    {
+      "id": "104",
+      "name": "Blender",
+      "description": "Multi-functional kitchen blender",
+      "price": 49.99,
+      "image_url": "https://food.fnr.sndimg.com/content/dam/images/food/fullset/2023/1/03/fn_best-blenders_s4x3.png.rend.hgtvcom.616.462.suffix/1672777673140.png"
+    },
+    {
+      "id": "105",
+      "name": "Headphones",
+      "description": "Noise-cancelling over-ear headphones",
+      "price": 199.99,
+      "image_url": "https://media.wired.com/photos/65e0d28f18fecb6ce8a78d27/16:9/w_1920%2Cc_limit/Best-Wireless-Headphones-Gear-GettyImages-1329971784.jpg"
+    },
+    {
+      "id": "106",
+      "name": "Coffee Maker",
+      "description": "Automatic drip coffee maker with timer",
+      "price": 89.99,
+      "image_url": "https://media-cldnry.s-nbcnews.com/image/upload/t_fit-1240w,f_auto,q_auto:best/rockcms/2023-10/231003-best-coffee-makers-bd-main-857660.jpg"
+    },
+    {
+      "id": "107",
+      "name": "Women's Jeans",
+      "description": "Stylish denim jeans for women",
+      "price": 49.99,
+      "image_url": "https://cdn.thewirecutter.com/wp-content/media/2023/10/womensjeans-2048px-04346.jpg?auto=webp&quality=75&width=980&dpr=2"
+    },
+    {
+      "id": "108",
+      "name": "Smartwatch",
+      "description": "Water-resistant smartwatch with heart rate monitor",
+      "price": 149.99,
+      "image_url": "https://cdn.thewirecutter.com/wp-content/media/2023/10/smartwatches-2048px-2x1-1.jpg?width=2048&quality=75&crop=2:1&auto=webp"
+    },
+    {
+      "id": "109",
+      "name": "Microwave Oven",
+      "description": "Compact microwave oven with multiple settings",
+      "price": 129.99,
+      "image_url": "https://imgeng.jagran.com/images/2023/nov/best%20microwave%20ovens1700571701691.jpg"
+    },
+    {
+      "id": "110",
+      "name": "Running Shoes",
+      "description": "Lightweight running shoes for all terrains",
+      "price": 79.99,
+      "image_url": "https://hips.hearstapps.com/hmg-prod/images/run-reebok-running-shoes-64e3beadbe692.jpg"
+    },
+    {
+      "id": "112",
+      "name": "Router",
+      "description": "5g Router",
+      "price": "3000",
+      "image_url": "https://media.wired.com/photos/6311133e567860ab6c66c672/master/w_1920,c_limit/Synology-RT6600ax-Gear.jpg"
+    }
+  ]
+}
